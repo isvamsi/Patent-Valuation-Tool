@@ -229,7 +229,22 @@ function updateUserProfile(user) {
         document.getElementById('show-history-btn').addEventListener('click', showHistoryModal);
     } else {
         // Not logged in or guest view
-        userInfoDiv.innerHTML = `<a href="/login" style="color: white; text-decoration: none;">Login</a>`;
+        // Ensure i-button is not displayed for guest user if you want
+        // If you want to hide the i-button for guests, you'd handle it here.
+        // For now, assume it stays visible for application info.
+        const infoBtn = document.getElementById('info-btn');
+        if (infoBtn) {
+           // We keep the info button visible for all users/guests
+           userInfoDiv.innerHTML = '';
+           userInfoDiv.appendChild(infoBtn);
+           const loginLink = document.createElement('a');
+           loginLink.href = "/login";
+           loginLink.style.cssText = "color: white; text-decoration: none;";
+           loginLink.textContent = "Login";
+           userInfoDiv.appendChild(loginLink);
+        } else {
+           userInfoDiv.innerHTML = `<a href="/login" style="color: white; text-decoration: none;">Login</a>`;
+        }
     }
 }
 
@@ -527,6 +542,24 @@ function renderSpiderChart(canvasId, spiderData) {
 window.addEventListener('DOMContentLoaded', () => {
   // NOTE: updateUserProfile is called via inline script in main.html
 
+  // --- Info Modal Logic ---
+  const infoBtn = document.getElementById('info-btn');
+  const infoModal = document.getElementById('info-modal-overlay');
+  const closeInfoModal = document.getElementById('close-info-modal');
+
+  if (infoBtn && infoModal && closeInfoModal) {
+      infoBtn.addEventListener('click', (event) => {
+          // Prevents the window.onclick listener (which closes the user-dropdown) from immediately closing the modal
+          event.stopPropagation();
+          infoModal.style.display = 'block';
+      });
+
+      closeInfoModal.addEventListener('click', () => {
+          infoModal.style.display = 'none';
+      });
+  }
+  // --- End Info Modal Logic ---
+
   updateDeltaInputs();
 
   document.getElementById('run-btn')
@@ -554,16 +587,21 @@ window.addEventListener('DOMContentLoaded', () => {
       document.getElementById('history-modal').style.display = 'none';
   });
 
-  // Close dropdown on outside click
+  // Close dropdown/modal on outside click
   window.onclick = function(event) {
+    const userDropdown = document.getElementById("user-dropdown");
+    const infoModal = document.getElementById('info-modal-overlay');
+
+    // Handle user dropdown closing
     if (!event.target.closest('.user-info')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      for (let i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
+        if (userDropdown && userDropdown.classList.contains('show')) {
+            userDropdown.classList.remove('show');
         }
-      }
+    }
+
+    // Close the info modal if clicked outside the content (on the overlay)
+    if (event.target === infoModal) {
+        infoModal.style.display = 'none';
     }
   }
 });
