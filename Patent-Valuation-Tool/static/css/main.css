@@ -1,0 +1,389 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f0f2f5; /* Light gray background for contrast */
+}
+
+/* --- Header & Footer (Green Strips) --- */
+.main-header {
+  background: linear-gradient(90deg, #4caf50, #66bb6a); /* Green gradient */
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.main-header h1 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 500;
+}
+
+footer {
+  text-align: center;
+  padding: 10px 20px;
+  background: #4caf50;
+  color: #fff;
+  font-size: 0.9em;
+  margin-top: auto; /* Pushes footer to the bottom */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+footer p {
+    margin: 5px 0 0 0;
+}
+
+/* --- Download Button Styling --- */
+.download-btn {
+  background: #fff;
+  color: #4caf50;
+  padding: 10px 30px;
+  border: 2px solid #4caf50;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.download-btn:hover {
+  background: #4caf50;
+  color: #fff;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+/* --- End Download Button Styling --- */
+
+
+/* --- User Info/Dropdown Styles --- */
+.user-info {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1em;
+}
+
+.user-info a#user-icon {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.user-info a#user-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #ffffff; /* White background */
+    min-width: 220px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10;
+    border-radius: 8px;
+    padding: 10px;
+    color: #333;
+    text-align: left;
+    margin-top: 10px; 
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content p {
+    margin: 8px 0;
+    font-size: 0.95em;
+    padding: 0 5px;
+}
+
+.dropdown-content hr {
+    border: 0;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 8px 0;
+}
+
+.dropdown-btn {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: none;
+    background: #007bff; /* Blue for general actions */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background-color 0.2s;
+}
+
+.dropdown-btn:hover {
+    background: #0056b3;
+}
+
+.logout-btn {
+    background: #f44336; /* Red for Logout */
+    margin-top: 5px;
+}
+
+.logout-btn:hover {
+    background: #da190b;
+}
+
+.delete-account-btn {
+    background: #777; /* Darker red for Delete Account */
+}
+.delete-account-btn:hover {
+    background: #555;
+}
+
+.admin-btn {
+    background: #4caf50; /* Green for Admin Portal */
+}
+
+.admin-btn:hover {
+    background: #45a049;
+}
+/* End User Info/Dropdown Styles */
+
+.main-container {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  gap: 20px;
+}
+
+.input-section {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.input-section h2 {
+  font-size: 1.6em;
+  margin-bottom: 25px;
+  color: #333;
+  border-bottom: 2px solid #4caf50;
+  padding-bottom: 10px;
+  text-align: left;
+}
+
+.input-section label {
+  display: block;
+  margin-top: 12px; 
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #555;
+}
+
+.input-section input, .input-section select {
+  width: 100%;
+  padding: 10px;
+  margin: 0 0 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+.input-section select {
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%234caf50%22%20d%3D%22M287%2C197.8L156.4%2C67.2c-2.4-2.4-5.9-2.4-8.3%2C0L1%2C197.8c-2.4%2C2.4-2.4%2C6.5%2C0%2C8.9s5.9%2C2.4%2C8.3%2C0L148.1%2C80.2L278.7%2C206.7c2.4%2C2.4%2C5.9%2C2.4%2C8.3%2C0C289.4%2C204.3%2C289.4%2C200.2%2C287%2C197.8z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  background-size: 10px;
+  cursor: pointer;
+}
+
+.input-section input:focus, .input-section select:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76,175,80,0.6);
+  outline: none;
+}
+
+.btn {
+  background: #4caf50;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 20px; 
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+  background: #45a049;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.output-section {
+  flex: 2;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.output-section h2 {
+  font-size: 1.6em;
+  margin-bottom: 25px;
+  color: #333;
+  border-bottom: 2px solid #4caf50;
+  padding-bottom: 10px;
+  text-align: left;
+}
+
+.output-box {
+  background: #f7fff7; /* Very light green hint */
+  border: 2px solid #4caf50;
+  padding: 25px;
+  font-size: 1.8em;
+  text-align: center;
+  border-radius: 8px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.summary-output {
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+/* --- Dashboard Grid Layout (4x4 Chart Section) --- */
+.dashboard-grid {
+    display: grid;
+    /* Two equal columns */
+    grid-template-columns: 1fr 1fr;
+    /* Two rows for charts + one row for the summary */
+    grid-template-rows: auto 400px 400px;
+    gap: 15px;
+    padding-top: 10px;
+}
+
+.summary-output {
+    grid-column: 1 / 3; /* Span both columns for the main result */
+    grid-row: 1 / 2; /* Explicitly place in the first row */
+    font-size: 2.2em;
+    font-weight: 600;
+    padding: 15px;
+    margin-bottom: 0 !important;
+}
+
+.chart-container {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.chart-container h3 {
+    font-size: 1.1em;
+    color: #4caf50;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Specific grid placements: (Starts from row 2 to form 2x2 matrix) */
+.chart-1 { grid-area: 2 / 1 / 3 / 2; } /* Row 2, Column 1 */
+.chart-2 { grid-area: 2 / 2 / 3 / 3; } /* Row 2, Column 2 */
+.chart-3 { grid-area: 3 / 1 / 4 / 2; } /* Row 3, Column 1 */
+.chart-4 { grid-area: 3 / 2 / 4 / 3; } /* Row 3, Column 2 */
+
+/* --- History Modal Styles --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#history-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.history-item {
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-left: 5px solid #4caf50; /* Green accent */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-item:hover, .history-item.selected {
+    background-color: #e6ffe6; /* Light green on selection/hover */
+    border-color: #45a049;
+}
+
+.history-item p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.highlight-value {
+    font-weight: bold;
+    color: #4caf50;
+}
+
+#detail-inputs {
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    font-size: 0.9em;
+    font-family: monospace;
+}
