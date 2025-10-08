@@ -519,7 +519,7 @@ def calculate():
         A, N, C, times, deltas, ps_for_export = calculate_lattices(V_calc, K_calc, T, sigma, delta_val, r, n, deltas_manual) 
 
         # CRITICAL FIX: Ensure the probability array used for DataFrame creation is the full length (n+1)
-        # The ps_for_export returned by the helper function (6th value) already has the correct length (n+1).
+        # The ps_for_export returned by the helper function (6th value) already has the correct length (n+1)
         
         initial_option_value_actual_units = C[0][0]
         initial_option_value_thousands = initial_option_value_actual_units / 1000
@@ -667,6 +667,15 @@ def calculate():
         return jsonify({'error': str(e)}), 500
 
 
+# -----------------------------------------------
+# FINAL FIX: Database Initialization for Render
+# -----------------------------------------------
+
+# This line runs the database setup when Gunicorn loads the 'app.py' file.
+# It bypasses the need for the Render Shell/Jobs, which are unavailable on the Free tier.
+create_default_admin()
+
+
 if __name__ == '__main__':
-    create_default_admin() 
+    # When running locally using 'python app.py', Flask's built-in server is used.
     app.run(debug=True)
