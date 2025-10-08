@@ -98,8 +98,7 @@
         <table class="user-table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Username</th>
+                    <th>#</th> <th>Username</th>
                     <th>Email</th>
                     <th>Role</th>
                     <th>Action</th>
@@ -108,8 +107,7 @@
             <tbody>
                 {% for user in users %}
                 <tr>
-                    <td>{{ user.id }}</td>
-                    <td>{{ user.username }}</td>
+                    <td>{{ loop.index }}</td> <td>{{ user.username }}</td>
                     <td>{{ user.email }}</td>
                     <td>
                         {{ 'Super Admin' if user.is_super_admin else ('Admin' if user.is_admin else 'User') }}
