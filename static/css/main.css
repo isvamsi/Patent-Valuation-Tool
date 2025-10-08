@@ -70,6 +70,9 @@ footer p {
   top: 15px;
   right: 20px;
   font-size: 1em;
+  display: flex; /* Make user info and i-button align */
+  align-items: center;
+  gap: 10px; /* Space between i-button and profile icon */
 }
 
 .user-info a#user-icon {
@@ -87,7 +90,11 @@ footer p {
 .dropdown-content {
     display: none;
     position: absolute;
-    right: 0;
+    /* Adjust position since info button is now beside it */
+    right: 0; 
+    /* To account for the info button width and margin */
+    /* If the icon link has a width of W and i-button+gap is X, this should be -X. Let's rely on CSS to position from right: 0. */
+    
     background-color: #ffffff; /* White background */
     min-width: 220px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -387,3 +394,56 @@ footer p {
     font-size: 0.9em;
     font-family: monospace;
 }
+
+/* --- Info Button & Modal Styles (UPDATED) --- */
+
+.info-icon-btn {
+    /* Style to match the desired clean circle look */
+    background-color: white; /* White background */
+    color: #4caf50; /* Green text/icon color */
+    border: 2px solid #4caf50; /* Green border */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    /* Removed margin-left: 10px; to rely on user-info gap */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    transition: background-color 0.3s, color 0.3s;
+    flex-shrink: 0; /* Prevents button from shrinking */
+}
+
+.info-icon-btn:hover {
+    background-color: #e8f5e9; /* Very light green on hover */
+    color: #45a049;
+    border-color: #45a049;
+}
+
+.info-modal-content h2 {
+    color: #4caf50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info-list p {
+    margin-bottom: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    line-height: 1.4;
+    font-size: 0.95em;
+}
+
+.info-list p:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.info-list strong {
+    color: #333; /* Darker color for emphasis */
+}
+/* --- End Info Button & Modal Styles --- */
