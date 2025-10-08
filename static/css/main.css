@@ -66,7 +66,7 @@ footer p {
 
 /* --- User Info/Dropdown Styles --- */
 .user-info {
-  position: absolute;
+  position: absolute; 
   top: 15px;
   right: 20px;
   font-size: 1em;
@@ -89,21 +89,17 @@ footer p {
 
 .dropdown-content {
     display: none;
-    position: absolute;
-    /* Adjust position since info button is now beside it */
-    right: 0; 
-    /* To account for the info button width and margin */
-    /* If the icon link has a width of W and i-button+gap is X, this should be -X. Let's rely on CSS to position from right: 0. */
-    
-    background-color: #ffffff; /* White background */
+    position: absolute; 
+    right: 0;           
+    top: 40px;          /* FIX: Push the menu down below the profile icon */
+    background-color: #ffffff; 
     min-width: 220px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 10;
+    z-index: 100; /* FIX: Ensure it stacks above everything */
     border-radius: 8px;
     padding: 10px;
     color: #333;
     text-align: left;
-    margin-top: 10px; 
 }
 
 .dropdown-content.show {
@@ -395,7 +391,7 @@ footer p {
     font-family: monospace;
 }
 
-/* --- Info Button & Modal Styles (UPDATED) --- */
+/* --- Info Button & Modal Styles (FINAL) --- */
 
 .info-icon-btn {
     /* Style to match the desired clean circle look */
@@ -408,13 +404,12 @@ footer p {
     font-size: 1.2em;
     font-weight: bold;
     cursor: pointer;
-    /* Removed margin-left: 10px; to rely on user-info gap */
     display: inline-flex;
     justify-content: center;
     align-items: center;
     line-height: 1;
     transition: background-color 0.3s, color 0.3s;
-    flex-shrink: 0; /* Prevents button from shrinking */
+    flex-shrink: 0; 
 }
 
 .info-icon-btn:hover {
