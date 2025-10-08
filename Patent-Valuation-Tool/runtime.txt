@@ -1,0 +1,16 @@
+*(If you were using 3.11 locally, change this to `python-3.11.x`)*
+
+### Step 2: Commit and Redeploy
+
+1.  **Add the new file:**
+    ```bash
+    git add runtime.txt
+    ```
+2.  **Commit the change:**
+    ```bash
+    git commit -m "FIX: Specified Python runtime version for successful PostgreSQL build"
+    ```
+3.  **Push to GitHub:**
+    ```bash
+    git push
+    ```
